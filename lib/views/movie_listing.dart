@@ -23,23 +23,28 @@ class _MovieListingState extends State<MovieListing> {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: Container(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
               'Spider-Man: Brand New Day',
-              style: TextStyle(fontSize: 24),
+              style: cinemaHeaderStyle,
             ),
+            const SizedBox(height: 15),
             const Text(
               'Peter Parker faces a new threat while trying to protect New York City as Spider-Man.',
             ),
+            const SizedBox(height: 20),
             const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Runtime: 135 minutes'),
                 Text('Age Rating: 12A'),
               ],
             ),
+            const SizedBox(height: 20),
             DropdownMenu<int>(
               initialSelection: 1,
               label: const Text('Tickets'),
