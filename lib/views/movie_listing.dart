@@ -11,6 +11,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int selectedQuantity = 1;
+  bool addedToOrder = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +55,17 @@ class _MovieListingState extends State<MovieListing> {
                   selectedQuantity = value ?? 1;
                 });
               },
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  addedToOrder = true;
+                });
+              },
+              child: Text(
+                addedToOrder ? 'Added to order!' : 'Add to order',
+              ),
             ),
           ],
         ),
