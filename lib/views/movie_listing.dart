@@ -16,11 +16,21 @@ class MovieListing extends StatelessWidget {
       ),
       drawer: const NavDrawer(),
       body: Container(
-        child: const Column(
+        child: Column(
           children: [
-            Text('Spider-Man: Brand New Day'),
-            Text(
+            const Text(
+              'Spider-Man: Brand New Day',
+              style: TextStyle(fontSize: 24),
+            ),
+            const Text(
               'Peter Parker faces a new threat while trying to protect New York City as Spider-Man.',
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('Runtime: 135 minutes'),
+                Text('Age Rating: 12A'),
+              ],
             ),
           ],
         ),
