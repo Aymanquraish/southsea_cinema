@@ -15,7 +15,16 @@ class MovieListing extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      body: const SizedBox.shrink(),
+      body: Container(
+        child: const Column(
+          children: [
+            Text('Spider-Man: Brand New Day'),
+            Text(
+              'Peter Parker faces a new threat while trying to protect New York City as Spider-Man.',
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
