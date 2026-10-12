@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
+import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+
+  const MovieListing({
+    super.key,
+    required this.movie,
+  });
 
   @override
   State<MovieListing> createState() => _MovieListingState();
@@ -17,7 +23,7 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(appTitle, style: cinemaHeaderStyle),
+        title: Text(widget.movie.title, style: cinemaHeaderStyle),
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
         elevation: 0,
@@ -32,22 +38,28 @@ class _MovieListingState extends State<MovieListing> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Spider-Man: Brand New Day',
+                Text(
+                  widget.movie.title,
                   style: cinemaHeaderStyle,
                 ),
                 const SizedBox(height: 15),
-                const Text(
-                  'Peter Parker faces a new threat while trying to protect New York City as Spider-Man.',
+                Image.asset(
+                  widget.movie.imagePath,
+                  height: 200,
+                  fit: BoxFit.contain,
                 ),
+                const SizedBox(height: 15),
+                Text(widget.movie.description),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Runtime: 135 minutes'),
-                    const Text('Age Rating: 12A'),
+                    Text('Runtime: ${widget.movie.runtime} minutes'),
+                    Text('Age Rating: ${widget.movie.ageRating}'),
                   ],
                 ),
+                const SizedBox(height: 10),
+                Text('Screening: ${widget.movie.screeningTime}'),
                 const SizedBox(height: 20),
                 DropdownMenu<int>(
                   initialSelection: 1,
@@ -62,6 +74,7 @@ class _MovieListingState extends State<MovieListing> {
                   onSelected: (value) {
                     setState(() {
                       selectedQuantity = value ?? 1;
+                      addedToOrder = false;
                     });
                   },
                 ),
